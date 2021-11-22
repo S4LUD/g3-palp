@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
+import FormHelperText from "@mui/material/FormHelperText";
 import { Link } from "react-router-dom";
 
 const SurveyForm = () => {
@@ -16,12 +17,76 @@ const SurveyForm = () => {
     const [Section, setSection] = useState("");
     const [Email, setEmail] = useState("");
     const [Program, setProgram] = useState("");
+    const [error, setError] = useState(false);
+    const [helperText1, setHelperText1] = useState("");
+    const [helperText2, setHelperText2] = useState("");
+    const [helperText3, setHelperText3] = useState("");
+    const [helperText4, setHelperText4] = useState("");
+    const goToYearLevel = useRef();
+    const goToSection = useRef();
+    const goToEmail = useRef();
+    const goToProgram = useRef();
 
     const FG = {
       year_level: YearLevel,
       section: Section,
       email: Email,
       program: Program,
+    };
+
+    const handleRadioChange1 = (event) => {
+      setYearLevel(event.target.value);
+      setHelperText1("");
+      setError(false);
+    };
+
+    const handleRadioChange2 = (event) => {
+      setSection(event.target.value);
+      setHelperText2("");
+      setError(false);
+    };
+
+    const handleRadioChange3 = (event) => {
+      setEmail(event.target.value);
+      setHelperText3("");
+      setError(false);
+    };
+
+    const handleRadioChange4 = (event) => {
+      setProgram(event.target.value);
+      setHelperText4("");
+      setError(false);
+    };
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+
+      if (YearLevel === "") {
+        setHelperText1("Please select your Year Level.");
+        setError(true);
+        goToYearLevel.current.scrollIntoView();
+      } else if (Section === "") {
+        setHelperText2("Please type your Section.");
+        setError(true);
+        goToSection.current.scrollIntoView();
+      } else if (Email === "") {
+        setHelperText3("Please type your Email.");
+        setError(true);
+        goToEmail.current.scrollIntoView();
+      } else if (Program === "") {
+        setHelperText4("Please select your Program.");
+        setError(true);
+        goToProgram.current.scrollIntoView();
+      } else {
+        setError(false);
+        setError(false);
+        setError(false);
+        setError(false);
+
+        setData(FG);
+        setPage(true);
+        console.log(FG);
+      }
     };
 
     return (
@@ -47,119 +112,110 @@ const SurveyForm = () => {
               </div>
             </div>
           </div>
-          <FormControl component="fieldset">
-            <div className="forms">
-              <div className="form-content">
-                <div className="question">
-                  Year &amp; Level: <span className="required">*</span>
+          <form onSubmit={handleSubmit} ref={goToYearLevel}>
+            <FormControl component="fieldset" error={error}>
+              <div className="forms">
+                <div className="form-content">
+                  <div className="question">
+                    Year Level: <span className="required">*</span>
+                  </div>
+                  <RadioGroup value={YearLevel} onChange={handleRadioChange1}>
+                    <div className="content">
+                      <Radio value={1} />
+                      <span>1st Year</span>
+                    </div>
+                    <div className="content">
+                      <Radio value={2} />
+                      <span>2nd Year</span>
+                    </div>
+                    <div className="content">
+                      <Radio value={3} />
+                      <span>3rd Year</span>
+                    </div>
+                    <div className="content">
+                      <Radio value={4} />
+                      <span>4th year</span>
+                    </div>
+                  </RadioGroup>
+                  <FormHelperText>{helperText1}</FormHelperText>
                 </div>
-                <RadioGroup
-                  value={YearLevel}
-                  onChange={(e) => setYearLevel(e.target.value)}
-                >
-                  <div className="content">
-                    <Radio value={1} />
-                    <span>1st Year</span>
-                  </div>
-                  <div className="content">
-                    <Radio value={2} />
-                    <span>2nd Year</span>
-                  </div>
-                  <div className="content">
-                    <Radio value={3} />
-                    <span>3rd Year</span>
-                  </div>
-                  <div className="content">
-                    <Radio value={4} />
-                    <span>4th year</span>
-                  </div>
-                </RadioGroup>
               </div>
-            </div>
-            <div className="forms">
-              <div className="form-content">
-                <div className="question">
-                  Section: <span className="required">*</span>
+              <div className="forms">
+                <div className="form-content">
+                  <div className="question">
+                    Section: <span className="required">*</span>
+                  </div>
+                  <Box
+                    component="form"
+                    sx={{
+                      "& > :not(style)": { width: "35ch" },
+                    }}
+                    noValidate
+                    autoComplete="off"
+                  >
+                    <TextField
+                      variant="standard"
+                      value={Section}
+                      onChange={handleRadioChange2}
+                    />
+                  </Box>
+                  <FormHelperText>{helperText2}</FormHelperText>
                 </div>
-                <Box
-                  component="form"
-                  sx={{
-                    "& > :not(style)": { width: "35ch" },
-                  }}
-                  noValidate
-                  autoComplete="off"
-                >
-                  <TextField
-                    variant="standard"
-                    value={Section}
-                    onChange={(e) => setSection(e.target.value)}
-                  />
-                </Box>
               </div>
-            </div>
-            <div className="forms">
-              <div className="form-content">
-                <div className="question">
-                  Email Address: <span className="required">*</span>
+              <div className="forms">
+                <div className="form-content">
+                  <div className="question">
+                    Email Address: <span className="required">*</span>
+                  </div>
+                  <Box
+                    component="form"
+                    sx={{
+                      "& > :not(style)": { width: "35ch" },
+                    }}
+                    noValidate
+                    autoComplete="off"
+                  >
+                    <TextField
+                      variant="standard"
+                      value={Email}
+                      onChange={handleRadioChange3}
+                    />
+                  </Box>
+                  <FormHelperText>{helperText3}</FormHelperText>
                 </div>
-                <Box
-                  component="form"
-                  sx={{
-                    "& > :not(style)": { width: "35ch" },
-                  }}
-                  noValidate
-                  autoComplete="off"
-                >
-                  <TextField
-                    variant="standard"
-                    value={Email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </Box>
               </div>
-            </div>
-            <div className="forms">
-              <div className="form-content">
-                <div className="question">
-                  Program: <span className="required">*</span>
+              <div className="forms">
+                <div className="form-content">
+                  <div className="question">
+                    Program: <span className="required">*</span>
+                  </div>
+                  <RadioGroup value={Program} onChange={handleRadioChange4}>
+                    <div className="content">
+                      <Radio value="act" />
+                      <span>ACT</span>
+                    </div>
+                    <div className="content">
+                      <Radio value="bsit" />
+                      <span>BSIT</span>
+                    </div>
+                    <div className="content">
+                      <Radio value="bscs" />
+                      <span>BSCS</span>
+                    </div>
+                  </RadioGroup>
+                  <FormHelperText>{helperText4}</FormHelperText>
                 </div>
-                <RadioGroup
-                  value={Program}
-                  onChange={(e) => setProgram(e.target.value)}
-                >
-                  <div className="content">
-                    <Radio value="act" />
-                    <span>ACT</span>
-                  </div>
-                  <div className="content">
-                    <Radio value="bsit" />
-                    <span>BSIT</span>
-                  </div>
-                  <div className="content">
-                    <Radio value="bscs" />
-                    <span>BSCS</span>
-                  </div>
-                </RadioGroup>
               </div>
-            </div>
-            <div className="btnControl">
-              <Button
-                variant="contained"
-                color="primary"
-                type="submit"
-                onClick={() => {
-                  setData(FG);
-                  setPage(true);
-                  console.log(FG);
-                }}
-              >
-                Next
-              </Button>
-              <Link to="/survey/2/page">
-                <Button variant="text">Clear form</Button>
-              </Link>
-            </div>
-          </FormControl>
+              <div className="btnControl">
+                <Button variant="contained" color="primary" type="submit">
+                  Next
+                </Button>
+                <Link to="/survey/2/page">
+                  <Button variant="text">Clear form</Button>
+                </Link>
+              </div>
+            </FormControl>
+          </form>
         </div>
       </div>
     );
