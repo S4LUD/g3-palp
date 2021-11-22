@@ -1,0 +1,462 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  list-style: none;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+}
+
+.login-container {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login-container .login-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px solid #f5f5f5;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.login-container .login-wrapper .signup-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 0.8rem;
+  margin-top: 15px;
+  color: #767a7e;
+}
+
+.login-container .login-wrapper .signup-link div {
+  color: #767a7e;
+  text-decoration: underline;
+}
+
+.login-container .login-wrapper .signup-link div:hover {
+  color: #52abfa;
+  font-weight: bold;
+}
+
+.login-container .login-wrapper .forgot-password {
+  text-align: right;
+  color: #767a7e;
+  width: 300px;
+  font-size: 0.8rem;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.login-container .login-wrapper .forgot-password:hover {
+  color: #fa7365;
+  font-weight: bold;
+}
+
+.login-container .login-wrapper .lp-title {
+  color: black;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.login-container .login-wrapper .inputs {
+  width: 300px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #f5f5f5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.login-container .login-wrapper .inputs svg {
+  margin-left: 10px;
+}
+
+.login-container .login-wrapper .inputs input {
+  width: 100%;
+  height: 35px;
+  padding-left: 10px;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.login-container .login-wrapper button {
+  background: none;
+  border: 1px solid #f5f5f5;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.login-container .login-wrapper button:hover {
+  background: #fafafa;
+  color: #9adc6d;
+  font-weight: bold;
+}
+
+.headNav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 65px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.headNav .headLogo {
+  font-size: 2rem;
+  color: black;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.headNav .Menu-Links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 0.9rem;
+}
+
+.headNav .Menu-Links .Links {
+  color: black;
+  margin-right: 10px;
+  padding: 7px 10px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.headNav .Menu-Links .Links:hover {
+  background: #fafafa;
+}
+
+.homepage {
+  font-size: 0.9rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+}
+
+.homepage .misvis {
+  width: 50vw;
+}
+
+.homepage .misvis .mission {
+  margin: 10px;
+  padding: 10px;
+  color: black;
+  border: 1px solid #f5f5f5;
+  border-radius: 3px;
+}
+
+.homepage .misvis .mission .title {
+  font-size: 1rem;
+}
+
+.homepage .misvis .mission .content {
+  text-align: justify;
+}
+
+.homepage .misvis .vision {
+  margin: 10px;
+  padding: 10px;
+  color: black;
+  border: 1px solid #f5f5f5;
+  border-radius: 3px;
+}
+
+.homepage .misvis .vision .title {
+  font-size: 1rem;
+}
+
+.homepage .misvis .vision .content {
+  text-align: justify;
+}
+
+.homepage .objective {
+  margin: 10px 10px 10px 5px;
+  padding: 10px;
+  color: black;
+  border: 1px solid #f5f5f5;
+  border-radius: 3px;
+  width: 50vw;
+}
+
+.homepage .objective .title {
+  font-size: 1rem;
+}
+
+.homepage .objective .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.homepage .objective .content span {
+  text-align: justify;
+  padding-top: 10px;
+}
+
+.survey-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px 10px 0 10px;
+}
+
+.survey-container .survey-wrapper {
+  width: 700px;
+}
+
+.survey-container .survey-wrapper .headingSecond {
+  background: white;
+  margin-bottom: 10px;
+  border: 1px solid #f5f5f5;
+  border-radius: 10px;
+}
+
+.survey-container .survey-wrapper .headingSecond .colorheader {
+  background: #fa9050;
+  height: 50px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 20px;
+}
+
+.survey-container .survey-wrapper .headingSecond .content-wrapper {
+  padding: 10px 20px 20px 20px;
+}
+
+.survey-container .survey-wrapper .headingSecond .content-wrapper .content {
+  font-size: 14px;
+  font-weight: 300;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  letter-spacing: 0.2px;
+}
+
+.survey-container .survey-wrapper .headingSecond .content-wrapper .content .c-one {
+  margin-bottom: 10px;
+}
+
+.survey-container .survey-wrapper .heading {
+  background: white;
+  margin-bottom: 10px;
+  border: 1px solid #f5f5f5;
+  border-radius: 10px;
+}
+
+.survey-container .survey-wrapper .heading .colorheader {
+  background: #fa9050;
+  height: 8px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.survey-container .survey-wrapper .heading .content-wrapper {
+  padding: 10px 20px 20px 20px;
+}
+
+.survey-container .survey-wrapper .heading .content-wrapper .title {
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+}
+
+.survey-container .survey-wrapper .heading .content-wrapper .content {
+  font-size: 14px;
+  font-weight: 300;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  letter-spacing: 0.2px;
+}
+
+.survey-container .survey-wrapper .heading .content-wrapper .content .c-one {
+  margin-bottom: 10px;
+}
+
+.survey-container .survey-wrapper .forms {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border: 1px solid #f5f5f5;
+  border-radius: 10px;
+  width: 700px;
+  margin-bottom: 10px;
+  background: white;
+}
+
+.survey-container .survey-wrapper .forms .form-content {
+  padding: 20px;
+}
+
+.survey-container .survey-wrapper .forms .form-content .question {
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+}
+
+.survey-container .survey-wrapper .forms .form-content .question .required {
+  color: #fa3636;
+}
+
+.survey-container .survey-wrapper .forms .form-content .content #rdb {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.survey-container .survey-wrapper .forms .form-content .content span {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.survey-container .survey-wrapper .form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border: 1px solid #f5f5f5;
+  border-radius: 10px;
+  width: 700px;
+  margin-bottom: 10px;
+  background: white;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  padding-bottom: 20px;
+}
+
+.survey-container .survey-wrapper .form .title {
+  font-size: 16px;
+  font-weight: 400;
+  padding: 20px 20px 0 20px;
+}
+
+.survey-container .survey-wrapper .form .form-content {
+  padding: 20px 20px 0 20px;
+}
+
+.survey-container .survey-wrapper .form .form-content .question {
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+}
+
+.survey-container .survey-wrapper .form .form-content .question .required {
+  color: #fa3636;
+}
+
+.survey-container .survey-wrapper .form .form-content .content #rdb {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.survey-container .survey-wrapper .form .form-content .content span {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.survey-container .survey-wrapper .btnControl {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 10px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.survey-container .survey-wrapper .btnControl .actionstyle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.survey-container .survey-wrapper .btnControl .actionstyle .spacer {
+  margin: 5px;
+}
+/*# sourceMappingURL=App.css.map */
