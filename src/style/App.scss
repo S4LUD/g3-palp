@@ -19,6 +19,24 @@ html {
   width: 100%;
 }
 
+.done {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .title {
+    font-size: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  .desk {
+    margin-top: 50px;
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
 .login-container {
   height: 100vh;
   display: flex;
@@ -182,12 +200,14 @@ html {
     }
   }
 }
+
 .survey-container {
   display: flex;
   justify-content: center;
   padding: 10px 10px 0 10px;
   .survey-wrapper {
-    width: 700px;
+    max-width: 700px;
+    min-width: 1px;
     .headingSecond {
       background: white;
       .colorheader {
@@ -247,16 +267,26 @@ html {
       border: 1px solid #f5f5f5;
       border-radius: 10px;
     }
+
     .forms {
       display: flex;
       flex-direction: row;
       border: 1px solid #f5f5f5;
       border-radius: 10px;
-      width: 700px;
       margin-bottom: 10px;
       background: white;
+      max-width: 700px;
+      @media screen and (min-width: 700px) {
+        width: 700px;
+      }
+      @media screen and (max-width: 360px) {
+        width: 340px;
+      }
       .form-content {
         padding: 20px;
+        @media screen and (max-width: 480px) {
+          min-width: 340px;
+        }
         .question {
           font-size: 16px;
           font-weight: 300;
@@ -282,7 +312,6 @@ html {
       flex-direction: row;
       border: 1px solid #f5f5f5;
       border-radius: 10px;
-      width: 700px;
       margin-bottom: 10px;
       background: white;
       flex-direction: column;
@@ -292,8 +321,17 @@ html {
         font-weight: 400;
         padding: 20px 20px 0 20px;
       }
+      @media screen and (min-width: 700px) {
+        width: 700px;
+      }
+      @media screen and (max-width: 360px) {
+        width: 340px;
+      }
       .form-content {
-        padding: 20px 20px 0 20px;
+        padding: 20px;
+        @media screen and (max-width: 480px) {
+          min-width: 340px;
+        }
         .question {
           font-size: 16px;
           font-weight: 300;

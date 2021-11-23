@@ -6,11 +6,31 @@ import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
 import FormHelperText from "@mui/material/FormHelperText";
-import { Link } from "react-router-dom";
 
 const SurveyForm = () => {
   const [Page, setPage] = useState(false);
+  const [isDone, setisDone] = useState(false);
   const [Data, setData] = useState([]);
+
+  const DoneSurvey = () => {
+    return (
+      <div className="done">
+        <div className="title">Thank you for participating to our survey.</div>
+        <Button
+          onClick={() => {
+            setPage(false);
+            setisDone(false);
+          }}
+          variant="contained"
+        >
+          Take Survey Again
+        </Button>
+        <div className="desk">
+          You can close this page if your not taking the survey again.
+        </div>
+      </div>
+    );
+  };
 
   const FirstPage = () => {
     const [YearLevel, setYearLevel] = useState("");
@@ -26,6 +46,13 @@ const SurveyForm = () => {
     const goToSection = useRef();
     const goToEmail = useRef();
     const goToProgram = useRef();
+
+    const clearValue = () => {
+      setYearLevel("");
+      setSection("");
+      setEmail("");
+      setProgram("");
+    };
 
     const FG = {
       year_level: YearLevel,
@@ -87,13 +114,8 @@ const SurveyForm = () => {
         });
       } else {
         setError(false);
-        setError(false);
-        setError(false);
-        setError(false);
-
         setData(FG);
         setPage(true);
-        console.log(FG);
       }
     };
 
@@ -156,7 +178,7 @@ const SurveyForm = () => {
                   <Box
                     component="form"
                     sx={{
-                      "& > :not(style)": { width: "35ch" },
+                      "& > :not(style)": { width: "20ch" },
                     }}
                     noValidate
                     autoComplete="off"
@@ -178,7 +200,7 @@ const SurveyForm = () => {
                   <Box
                     component="form"
                     sx={{
-                      "& > :not(style)": { width: "35ch" },
+                      "& > :not(style)": { width: "20ch" },
                     }}
                     noValidate
                     autoComplete="off"
@@ -218,9 +240,9 @@ const SurveyForm = () => {
                 <Button variant="contained" color="primary" type="submit">
                   Next
                 </Button>
-                <Link to="/survey/2/page">
-                  <Button variant="text">Clear form</Button>
-                </Link>
+                <Button onClick={clearValue} variant="text">
+                  Clear form
+                </Button>
               </div>
             </FormControl>
           </form>
@@ -247,6 +269,27 @@ const SurveyForm = () => {
     const [SF1, setSF1] = useState("");
     const [SF2, setSF2] = useState("");
     const [SF3, setSF3] = useState("");
+
+    const clearData = () => {
+      setOSG1("");
+      setOSG2("");
+      setIQ1("");
+      setIQ2("");
+      setIQ3("");
+      setSQ1("");
+      setSQ2("");
+      setSQ3("");
+      setTM1("");
+      setTM2("");
+      setTM3("");
+      setLE1("");
+      setLE2("");
+      setLE3("");
+      setSF1("");
+      setSF2("");
+      setSF3("");
+    };
+
     const [error, setError] = useState(false);
     const [helperText1, setHelperText1] = useState("");
     const [helperText2, setHelperText2] = useState("");
@@ -403,9 +446,51 @@ const SurveyForm = () => {
       setError(false);
     };
 
-    const CombineData = () => {
-      let mergeds = { ...Data, ...SP };
-      console.log(mergeds);
+    const mergeData = async () => {
+      const finalData = { ...Data, ...SP };
+
+      if (finalData) {
+        const ResponseSV = await fetch(
+          `https://s4lud-palp-api.herokuapp.com/api/palp/survey`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              year_level: finalData.year_level,
+              section: finalData.section,
+              email: finalData.email,
+              program: finalData.program,
+              osg1: finalData.osg1,
+              osg2: finalData.osg2,
+              iq1: finalData.iq1,
+              iq2: finalData.iq2,
+              iq3: finalData.iq3,
+              sq1: finalData.sq1,
+              sq2: finalData.sq2,
+              sq3: finalData.sq3,
+              tm1: finalData.tm1,
+              tm2: finalData.tm2,
+              tm3: finalData.tm3,
+              le1: finalData.le1,
+              le2: finalData.le2,
+              le3: finalData.le3,
+              sf1: finalData.sf1,
+              sf2: finalData.sf2,
+              sf3: finalData.sf3,
+            }),
+          }
+        );
+        try {
+          const saveMove = await ResponseSV.json();
+          if (saveMove) {
+            setisDone(true);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
     };
 
     const handleSubmit = (event) => {
@@ -515,10 +600,7 @@ const SurveyForm = () => {
         });
       } else {
         setError(false);
-        setError(false);
-        setError(false);
-        setError(false);
-        CombineData();
+        mergeData();
       }
     };
 
@@ -1096,7 +1178,9 @@ const SurveyForm = () => {
                     Submit
                   </Button>
                 </div>
-                <Button variant="text">Clear form</Button>
+                <Button onClick={clearData} variant="text">
+                  Clear form
+                </Button>
               </div>
             </FormControl>
           </form>
@@ -1105,7 +1189,7 @@ const SurveyForm = () => {
     );
   };
 
-  return <>{Page ? <SecondPage /> : <FirstPage />}</>;
+  return <>{isDone ? <DoneSurvey /> : Page ? <SecondPage /> : <FirstPage />}</>;
 };
 
 export default SurveyForm;

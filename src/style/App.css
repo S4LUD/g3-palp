@@ -19,6 +19,35 @@ html {
   width: 100%;
 }
 
+.done {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.done .title {
+  font-size: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.done .desk {
+  margin-top: 50px;
+  font-size: 16px;
+  text-align: center;
+}
+
 .login-container {
   height: 100vh;
   display: -webkit-box;
@@ -264,7 +293,8 @@ html {
 }
 
 .survey-container .survey-wrapper {
-  width: 700px;
+  max-width: 700px;
+  min-width: 1px;
 }
 
 .survey-container .survey-wrapper .headingSecond {
@@ -360,13 +390,31 @@ html {
           flex-direction: row;
   border: 1px solid #f5f5f5;
   border-radius: 10px;
-  width: 700px;
   margin-bottom: 10px;
   background: white;
+  max-width: 700px;
+}
+
+@media screen and (min-width: 700px) {
+  .survey-container .survey-wrapper .forms {
+    width: 700px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .survey-container .survey-wrapper .forms {
+    width: 340px;
+  }
 }
 
 .survey-container .survey-wrapper .forms .form-content {
   padding: 20px;
+}
+
+@media screen and (max-width: 480px) {
+  .survey-container .survey-wrapper .forms .form-content {
+    min-width: 340px;
+  }
 }
 
 .survey-container .survey-wrapper .forms .form-content .question {
@@ -399,7 +447,6 @@ html {
           flex-direction: row;
   border: 1px solid #f5f5f5;
   border-radius: 10px;
-  width: 700px;
   margin-bottom: 10px;
   background: white;
   -ms-flex-direction: column;
@@ -413,8 +460,26 @@ html {
   padding: 20px 20px 0 20px;
 }
 
+@media screen and (min-width: 700px) {
+  .survey-container .survey-wrapper .form {
+    width: 700px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .survey-container .survey-wrapper .form {
+    width: 340px;
+  }
+}
+
 .survey-container .survey-wrapper .form .form-content {
-  padding: 20px 20px 0 20px;
+  padding: 20px;
+}
+
+@media screen and (max-width: 480px) {
+  .survey-container .survey-wrapper .form .form-content {
+    min-width: 340px;
+  }
 }
 
 .survey-container .survey-wrapper .form .form-content .question {
