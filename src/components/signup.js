@@ -1,8 +1,102 @@
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import ReactLoading from "react-loading";
+import jwt from "jsonwebtoken";
 
-const Login = () => {
+const Signup = () => {
+  const navigate = useNavigate();
+  const [isToken, setToken] = useState(false);
+  useEffect(() => {
+    if (sessionStorage.getItem("token")) {
+      setToken(true);
+      try {
+        const verified = jwt.verify(
+          sessionStorage.getItem("token"),
+          process.env.REACT_APP_TOKEN_SECRET
+        );
+        verified._id ? navigate("/dashboard") : navigate("/login");
+        setToken(false);
+      } catch (error) {
+        setToken(false);
+      }
+    }
+  }, [navigate]);
+
+  const [isUsername, setUsername] = useState("");
+  const [isEmail, setEmail] = useState("");
+  const [isPassword, setPassword] = useState("");
+  const [isConfirmPassword, setConfirmPassword] = useState("");
+  const [isPasswordError, setPasswordError] = useState(false);
+  const [isError, setError] = useState("");
+  const [isSuccessShow, setSuccessShow] = useState(false);
+  const [isSuccess, setSuccess] = useState("");
+  const [isLoading, setLoading] = useState(false);
+
+  const handleSubmit = async () => {
+    if (!isConfirmPassword) {
+      setError("Don't leave the field blank.");
+      setPasswordError(true);
+    } else if (!isUsername) {
+      setError("Don't leave the field blank.");
+      setPasswordError(true);
+    } else if (!isEmail) {
+      setError("Don't leave the field blank.");
+      setPasswordError(true);
+    } else if (!isPassword) {
+      setError("Don't leave the field blank.");
+      setPasswordError(true);
+    } else if (isPassword !== isConfirmPassword) {
+      setError("Password doesn't match.");
+      setPasswordError(true);
+    } else {
+      setPasswordError(false);
+      setSuccessShow(false);
+      setLoading(true);
+      const raw = JSON.stringify({
+        username: isUsername,
+        email: isEmail,
+        password: isPassword,
+      });
+      const data = await fetch(
+        "https://s4lud-palp-api.herokuapp.com/api/palp/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: raw,
+        }
+      );
+      const response = await data.json();
+      if (response.message) {
+        setSuccess("Successfully Registered.");
+        setSuccessShow(true);
+      } else if (response.email) {
+        setError("Email already exist.");
+        setPasswordError(true);
+      } else if (response.username) {
+        setError("Username already exist.");
+        setPasswordError(true);
+      } else {
+        setError(response.error);
+        setPasswordError(true);
+      }
+      setLoading(false);
+    }
+  };
+
   return (
     <>
+      {isLoading ? (
+        <div className="loading">
+          <ReactLoading type="cubes" color="#52ABFA" height={100} width={55} />
+        </div>
+      ) : undefined}
+      {isToken ? (
+        <div className="loadings">
+          <ReactLoading type="cubes" color="#52ABFA" height={100} width={55} />
+        </div>
+      ) : undefined}
       <div className="login-container">
         <div className="login-wrapper">
           <div className="lp-title">Register</div>
@@ -12,7 +106,7 @@ const Login = () => {
               focusable="false"
               data-prefix="fas"
               data-icon="user"
-              class="svg-inline--fa fa-user fa-w-14"
+              className="svg-inline--fa fa-user fa-w-14"
               role="img"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 448 512"
@@ -24,9 +118,9 @@ const Login = () => {
               ></path>
             </svg>
             <input
+              value={isUsername}
+              onChange={(data) => setUsername(data.target.value)}
               type="text"
-              name="username"
-              id=""
               placeholder="Type your username"
               autoComplete="off"
             />
@@ -37,7 +131,7 @@ const Login = () => {
               focusable="false"
               data-prefix="far"
               data-icon="envelope"
-              class="svg-inline--fa fa-envelope fa-w-16"
+              className="svg-inline--fa fa-envelope fa-w-16"
               role="img"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
@@ -49,9 +143,9 @@ const Login = () => {
               ></path>
             </svg>
             <input
+              value={isEmail}
+              onChange={(data) => setEmail(data.target.value)}
               type="email"
-              name="email"
-              id=""
               placeholder="Type your email"
               autoComplete="off"
             />
@@ -62,7 +156,7 @@ const Login = () => {
               focusable="false"
               data-prefix="fas"
               data-icon="key"
-              class="svg-inline--fa fa-key fa-w-16"
+              className="svg-inline--fa fa-key fa-w-16"
               role="img"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
@@ -74,20 +168,20 @@ const Login = () => {
               ></path>
             </svg>
             <input
+              value={isPassword}
+              onChange={(data) => setPassword(data.target.value)}
               type="password"
-              name="password"
-              id=""
               placeholder="Type your password"
               autoComplete="off"
             />
           </div>
-          <div className="inputs">
+          <div className="inputd">
             <svg
               aria-hidden="true"
               focusable="false"
               data-prefix="fas"
               data-icon="key"
-              class="svg-inline--fa fa-key fa-w-16"
+              className="svg-inline--fa fa-key fa-w-16"
               role="img"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
@@ -99,16 +193,18 @@ const Login = () => {
               ></path>
             </svg>
             <input
+              value={isConfirmPassword}
+              onChange={(data) => setConfirmPassword(data.target.value)}
               type="password"
-              name="confirm_password"
-              id=""
               placeholder="Confirm your password"
               autoComplete="off"
             />
           </div>
-          <Link to="/login">
-            <button type="submit">Register</button>
-          </Link>
+          {isSuccessShow ? (
+            <div className="success">{isSuccess}</div>
+          ) : undefined}
+          {isPasswordError ? <div className="error">{isError}</div> : undefined}
+          <button onClick={handleSubmit}>Register</button>
           <div className="signup-link">
             <span>Have already an account?</span>
             <Link to="/login">
@@ -121,4 +217,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

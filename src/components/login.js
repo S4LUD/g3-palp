@@ -1,8 +1,86 @@
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import ReactLoading from "react-loading";
+import jwt from "jsonwebtoken";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const [isToken, setToken] = useState(false);
+  useEffect(() => {
+    if (sessionStorage.getItem("token")) {
+      setToken(true);
+      try {
+        const verified = jwt.verify(
+          sessionStorage.getItem("token"),
+          process.env.REACT_APP_TOKEN_SECRET
+        );
+        verified._id ? navigate("/dashboard") : navigate("/login");
+        setToken(false);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }, [navigate]);
+
+  const [isEmail, setEmail] = useState("");
+  const [isPassword, setPassword] = useState("");
+  const [isPasswordError, setPasswordError] = useState(false);
+  const [isError, setError] = useState("");
+  const [isLoading, setLoading] = useState(false);
+
+  const handleSubmit = async () => {
+    if (!isPassword) {
+      setError("Don't leave the field blank.");
+      setPasswordError(true);
+    } else if (!isEmail) {
+      setError("Don't leave the field blank.");
+      setPasswordError(true);
+    } else {
+      setPasswordError(false);
+      setLoading(true);
+      const raw = JSON.stringify({
+        email: isEmail,
+        password: isPassword,
+      });
+      const data = await fetch(
+        "https://s4lud-palp-api.herokuapp.com/api/palp/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: raw,
+        }
+      );
+      const response = await data.json();
+      if (response.token) {
+        sessionStorage.setItem("token", response.token);
+        navigate("/dashboard");
+      } else if (response.message) {
+        setError(response.message);
+        setPasswordError(true);
+      } else if (response.email) {
+        setError(response.email);
+        setPasswordError(true);
+      } else {
+        setError(response.error);
+        setPasswordError(true);
+      }
+      setLoading(false);
+    }
+  };
+
   return (
     <>
+      {isLoading ? (
+        <div className="loading">
+          <ReactLoading type="cubes" color="#52ABFA" height={100} width={55} />
+        </div>
+      ) : isToken ? (
+        <div className="loadings">
+          <ReactLoading type="cubes" color="#52ABFA" height={100} width={55} />
+        </div>
+      ) : undefined}
       <div className="login-container">
         <div className="login-wrapper">
           <div className="lp-title">Login</div>
@@ -12,7 +90,7 @@ const Login = () => {
               focusable="false"
               data-prefix="far"
               data-icon="envelope"
-              class="svg-inline--fa fa-envelope fa-w-16"
+              className="svg-inline--fa fa-envelope fa-w-16"
               role="img"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
@@ -24,9 +102,9 @@ const Login = () => {
               ></path>
             </svg>
             <input
+              value={isEmail}
+              onChange={(data) => setEmail(data.target.value)}
               type="email"
-              name="email"
-              id=""
               placeholder="Type your email"
               autoComplete="off"
             />
@@ -37,7 +115,7 @@ const Login = () => {
               focusable="false"
               data-prefix="fas"
               data-icon="key"
-              class="svg-inline--fa fa-key fa-w-16"
+              className="svg-inline--fa fa-key fa-w-16"
               role="img"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
@@ -49,19 +127,20 @@ const Login = () => {
               ></path>
             </svg>
             <input
+              value={isPassword}
+              onChange={(data) => setPassword(data.target.value)}
               type="password"
-              name="password"
-              id=""
               placeholder="Type your password"
               autoComplete="off"
             />
           </div>
+          {isPasswordError ? <div className="error">{isError}</div> : undefined}
           {/* <Link to="/forgot"> */}
-          <div className="forgot-password">Forgot password?</div>
+          {/* <div className="forgot-password">Forgot password?</div> */}
           {/* </Link> */}
-          <Link to="/dashboard">
-            <button type="submit">Login</button>
-          </Link>
+          <button onClick={handleSubmit} type="submit">
+            Login
+          </button>
           <div className="signup-link">
             <span>Don't have an account with us yet?</span>
             <Link to="/signup">

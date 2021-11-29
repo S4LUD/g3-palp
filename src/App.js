@@ -15,6 +15,7 @@ function App() {
         <Route path="/signup" exact element={<Signup />} />
         <Route path="/dashboard" exact element={<Dashboard />} />
         <Route path="/survey" exact element={<SurveyForm />} />
+        {/* <Route path="/visualization" exact element={<Visualization />} /> */}
       </Routes>
     </BrowserRouter>
   );

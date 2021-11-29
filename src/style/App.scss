@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
 
 * {
   margin: 0;
@@ -9,14 +10,132 @@
   list-style: none;
 }
 
-iframe {
-  display: none;
-}
-
 body,
 html {
   height: 100%;
   width: 100%;
+}
+
+.gridStyle {
+  display: flex;
+
+  .resultContent {
+    margin: 20px 0 0 20px;
+    height: max-content;
+    border: 1px solid #e1e4e8;
+    width: 30%;
+    .overall {
+      margin: 20px;
+      .allResult {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        .oGood {
+          border: 1px solid #e1e4e8;
+          background: #f0f1f2;
+          padding: 5px;
+        }
+        .oHigh {
+          border: 1px solid #e1e4e8;
+          background: #f0f1f2;
+          padding: 5px;
+        }
+      }
+    }
+    .title {
+      background: #f0f1f2;
+      padding: 15px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .icon {
+        height: 21px;
+        padding-right: 15px;
+      }
+    }
+  }
+
+  .visual-container {
+    margin: 20px;
+    border: 1px solid #e1e4e8;
+    width: 70%;
+    .title {
+      background: #f0f1f2;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      .tLogs {
+        margin-left: 15px;
+      }
+    }
+    .prcss-lgs {
+      padding: 25px;
+      .seperator {
+        margin-top: 20px;
+      }
+      .disable-select {
+        user-select: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        display: flex;
+        align-items: center;
+        .icon {
+          display: flex;
+          margin-right: 15px;
+        }
+        .animate {
+          transform: rotate(0.25turn);
+          transition: transform 200ms ease 0s;
+        }
+        .animateClose {
+          transform: rotate(0turn);
+          transition: transform 200ms ease 0s;
+        }
+      }
+      .target {
+        padding: 15px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 500;
+        background: #f8f8fa;
+        border-radius: 5px;
+      }
+      .newtarget {
+        margin-top: 20px;
+      }
+      .iqresponses {
+        background: #0d1117;
+        cursor: context-menu;
+        padding: 20px 30px;
+        .rmean {
+          display: flex;
+          line-height: 1.5;
+          .rcount {
+            color: #8b949e;
+            font-size: 12px;
+            min-width: 4ch;
+            text-align: right;
+            margin-right: 12px;
+            user-select: none;
+            font-family: "Ubuntu", sans-serif;
+          }
+          .rdate {
+            font-size: 12px;
+            color: #8b949e;
+            margin-right: 12px;
+          }
+          .rmeanr {
+            font-family: "Ubuntu", sans-serif;
+            text-align: center;
+            color: #c9d1d9;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
 }
 
 .done {
@@ -37,6 +156,26 @@ html {
   }
 }
 
+.loading {
+  background: rgba(13, 17, 23, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+}
+
+.loadings {
+  background: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+}
+
 .login-container {
   height: 100vh;
   display: flex;
@@ -50,6 +189,18 @@ html {
     border: 1px solid #f5f5f5;
     padding: 10px;
     border-radius: 5px;
+    .success {
+      color: #9adc6d;
+      padding: 5px;
+      font-size: 12px;
+      user-select: none;
+    }
+    .error {
+      color: #fa7365;
+      padding: 5px;
+      font-size: 12px;
+      user-select: none;
+    }
     .signup-link {
       display: flex;
       flex-direction: column;
@@ -101,7 +252,25 @@ html {
         background: none;
       }
     }
+    .inputd {
+      width: 300px;
+      border-radius: 5px;
+      border: 1px solid #f5f5f5;
+      display: flex;
+      svg {
+        margin-left: 10px;
+      }
+      input {
+        width: 100%;
+        height: 35px;
+        padding-left: 10px;
+        border: none;
+        outline: none;
+        background: none;
+      }
+    }
     button {
+      margin-top: 15px;
       background: none;
       border: 1px solid #f5f5f5;
       padding: 10px 20px;
@@ -122,7 +291,7 @@ html {
   justify-content: space-between;
   align-items: center;
   height: 65px;
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid #e1e4e8;
   .headLogo {
     font-size: 2rem;
     color: black;

@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -9,14 +10,189 @@
   list-style: none;
 }
 
-iframe {
-  display: none;
-}
-
 body,
 html {
   height: 100%;
   width: 100%;
+}
+
+.gridStyle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.gridStyle .resultContent {
+  margin: 20px 0 0 20px;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  border: 1px solid #e1e4e8;
+  width: 30%;
+}
+
+.gridStyle .resultContent .overall {
+  margin: 20px;
+}
+
+.gridStyle .resultContent .overall .allResult {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.gridStyle .resultContent .overall .allResult .oGood {
+  border: 1px solid #e1e4e8;
+  background: #f0f1f2;
+  padding: 5px;
+}
+
+.gridStyle .resultContent .overall .allResult .oHigh {
+  border: 1px solid #e1e4e8;
+  background: #f0f1f2;
+  padding: 5px;
+}
+
+.gridStyle .resultContent .title {
+  background: #f0f1f2;
+  padding: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.gridStyle .resultContent .title .icon {
+  height: 21px;
+  padding-right: 15px;
+}
+
+.gridStyle .visual-container {
+  margin: 20px;
+  border: 1px solid #e1e4e8;
+  width: 70%;
+}
+
+.gridStyle .visual-container .title {
+  background: #f0f1f2;
+  padding: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.gridStyle .visual-container .title .tLogs {
+  margin-left: 15px;
+}
+
+.gridStyle .visual-container .prcss-lgs {
+  padding: 25px;
+}
+
+.gridStyle .visual-container .prcss-lgs .seperator {
+  margin-top: 20px;
+}
+
+.gridStyle .visual-container .prcss-lgs .disable-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.gridStyle .visual-container .prcss-lgs .disable-select .icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 15px;
+}
+
+.gridStyle .visual-container .prcss-lgs .disable-select .animate {
+  -webkit-transform: rotate(0.25turn);
+          transform: rotate(0.25turn);
+  -webkit-transition: -webkit-transform 200ms ease 0s;
+  transition: -webkit-transform 200ms ease 0s;
+  transition: transform 200ms ease 0s;
+  transition: transform 200ms ease 0s, -webkit-transform 200ms ease 0s;
+}
+
+.gridStyle .visual-container .prcss-lgs .disable-select .animateClose {
+  -webkit-transform: rotate(0turn);
+          transform: rotate(0turn);
+  -webkit-transition: -webkit-transform 200ms ease 0s;
+  transition: -webkit-transform 200ms ease 0s;
+  transition: transform 200ms ease 0s;
+  transition: transform 200ms ease 0s, -webkit-transform 200ms ease 0s;
+}
+
+.gridStyle .visual-container .prcss-lgs .target {
+  padding: 15px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  background: #f8f8fa;
+  border-radius: 5px;
+}
+
+.gridStyle .visual-container .prcss-lgs .newtarget {
+  margin-top: 20px;
+}
+
+.gridStyle .visual-container .prcss-lgs .iqresponses {
+  background: #0d1117;
+  cursor: context-menu;
+  padding: 20px 30px;
+}
+
+.gridStyle .visual-container .prcss-lgs .iqresponses .rmean {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 1.5;
+}
+
+.gridStyle .visual-container .prcss-lgs .iqresponses .rmean .rcount {
+  color: #8b949e;
+  font-size: 12px;
+  min-width: 4ch;
+  text-align: right;
+  margin-right: 12px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.gridStyle .visual-container .prcss-lgs .iqresponses .rmean .rdate {
+  font-size: 12px;
+  color: #8b949e;
+  margin-right: 12px;
+}
+
+.gridStyle .visual-container .prcss-lgs .iqresponses .rmean .rmeanr {
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+  color: #c9d1d9;
+  font-size: 12px;
 }
 
 .done {
@@ -46,6 +222,38 @@ html {
   margin-top: 50px;
   font-size: 16px;
   text-align: center;
+}
+
+.loading {
+  background: rgba(13, 17, 23, 0.1);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+}
+
+.loadings {
+  background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
 }
 
 .login-container {
@@ -78,6 +286,26 @@ html {
   border: 1px solid #f5f5f5;
   padding: 10px;
   border-radius: 5px;
+}
+
+.login-container .login-wrapper .success {
+  color: #9adc6d;
+  padding: 5px;
+  font-size: 12px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.login-container .login-wrapper .error {
+  color: #fa7365;
+  padding: 5px;
+  font-size: 12px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .login-container .login-wrapper .signup-link {
@@ -149,7 +377,30 @@ html {
   background: none;
 }
 
+.login-container .login-wrapper .inputd {
+  width: 300px;
+  border-radius: 5px;
+  border: 1px solid #f5f5f5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.login-container .login-wrapper .inputd svg {
+  margin-left: 10px;
+}
+
+.login-container .login-wrapper .inputd input {
+  width: 100%;
+  height: 35px;
+  padding-left: 10px;
+  border: none;
+  outline: none;
+  background: none;
+}
+
 .login-container .login-wrapper button {
+  margin-top: 15px;
   background: none;
   border: 1px solid #f5f5f5;
   padding: 10px 20px;
@@ -175,7 +426,7 @@ html {
       -ms-flex-align: center;
           align-items: center;
   height: 65px;
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid #e1e4e8;
 }
 
 .headNav .headLogo {
