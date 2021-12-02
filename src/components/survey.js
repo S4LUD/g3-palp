@@ -6,6 +6,7 @@ import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
 import FormHelperText from "@mui/material/FormHelperText";
+import Header from "./header";
 
 const SurveyForm = () => {
   const [Page, setPage] = useState(false);
@@ -1189,7 +1190,12 @@ const SurveyForm = () => {
     );
   };
 
-  return <>{isDone ? <DoneSurvey /> : Page ? <SecondPage /> : <FirstPage />}</>;
+  return (
+    <>
+      <Header />
+      {isDone ? <DoneSurvey /> : Page ? <SecondPage /> : <FirstPage />}
+    </>
+  );
 };
 
 export default SurveyForm;

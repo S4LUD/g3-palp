@@ -3,17 +3,29 @@ import HomeMenu from "./homeMenu";
 import DashMenu from "./dashMenu";
 
 const Header = () => {
-  let location = useLocation();
+  const location = useLocation();
   return (
     <div className="headNav">
       <Link to="/">
         <div className="headLogo">PALP</div>
       </Link>
       <div className="Menu-Links">
-        {location.pathname === "/dashboard" ? (
+        {location.pathname === "/visualization" ? (
+          <DashMenu />
+        ) : location.pathname === "/response" ? (
           <DashMenu />
         ) : location.pathname === "/" ? (
-          <HomeMenu />
+          !sessionStorage.getItem("credential") ? (
+            <HomeMenu />
+          ) : (
+            <DashMenu />
+          )
+        ) : location.pathname === "/survey" ? (
+          !sessionStorage.getItem("credential") ? (
+            <HomeMenu />
+          ) : (
+            <DashMenu />
+          )
         ) : undefined}
       </div>
     </div>

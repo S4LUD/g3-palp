@@ -16,9 +16,186 @@ html {
   width: 100%;
 }
 
+.Logo {
+  background: #9ADC6D;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .title {
+    font-size: 50px;
+  }
+}
+
+.user-response {
+  margin: 20px;
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  gap: 20px;
+  font-size: 14px;
+  .res-table {
+    height: max-content;
+    border: 1px solid #e1e4e8;
+    .title {
+      padding: 15px;
+      background: #f0f1f2;
+    }
+    .program-container {
+      padding: 10px 10px 0 10px;
+      display: flex;
+      justify-content: space-around;
+      font-size: 14px;
+      .prgrm-title {
+        user-select: none;
+        cursor: context-menu;
+        display: flex;
+        justify-content: center;
+        border: 1px solid #e1e4e8;
+        padding: 5px;
+        border-radius: 5px;
+        width: 90px;
+        .ttl {
+          padding-right: 10px;
+        }
+      }
+    }
+    .device-container {
+      padding: 10px;
+      display: flex;
+      font-size: 14px;
+      .device-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+      }
+      .prgrm-title {
+        user-select: none;
+        cursor: context-menu;
+        display: flex;
+        flex-direction: row;
+        border: 1px solid #e1e4e8;
+        padding: 5px;
+        border-radius: 5px;
+        width: 100px;
+        .ttl {
+          padding-right: 10px;
+        }
+      }
+    }
+    .devicec-container {
+      padding: 0 10px 10px 10px;
+      display: flex;
+      font-size: 14px;
+      .device-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+      }
+      .prgrm-title {
+        user-select: none;
+        cursor: context-menu;
+        display: flex;
+        flex-direction: row;
+        border: 1px solid #e1e4e8;
+        padding: 5px;
+        border-radius: 5px;
+        width: 100px;
+        .ttl {
+          padding-right: 10px;
+        }
+      }
+    }
+    .deviced-container {
+      padding: 0 22px 10px 10px;
+      font-size: 14px;
+      .device-wrapper {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 10px;
+      }
+      .prgrm-title {
+        user-select: none;
+        cursor: context-menu;
+        display: flex;
+        flex-direction: row;
+        border: 1px solid #e1e4e8;
+        padding: 5px;
+        border-radius: 5px;
+        justify-content: center;
+        .ttl {
+          padding-right: 10px;
+        }
+      }
+    }
+  }
+  .res-list {
+    height: max-content;
+    border: 1px solid #e1e4e8;
+    .title {
+      padding: 15px;
+      background: #f0f1f2;
+    }
+    .user-res-data-list {
+      padding: 10px 0 0 0;
+      .user-content {
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: 10px;
+        .user-data {
+          padding: 8px 5px;
+          border-radius: 5px;
+          border: 1px solid #e1e4e8;
+          display: flex;
+          cursor: context-menu;
+          user-select: none;
+          .res-title {
+            font-size: 14px;
+            margin-right: 5px;
+            border-radius: 5px;
+          }
+          .data {
+            font-size: 14px;
+          }
+          .email {
+            margin: auto;
+            width: 180px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .connection {
+            width: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .device {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 95px;
+          }
+          .program {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 36px;
+          }
+          .year {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+          }
+        }
+      }
+    }
+  }
+}
+
 .gridStyle {
   display: flex;
-
   .resultContent {
     margin: 20px 0 0 20px;
     height: max-content;
@@ -172,8 +349,9 @@ html {
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   position: absolute;
+  z-index: 1;
 }
 
 .login-container {
@@ -234,6 +412,14 @@ html {
       font-size: 1.8rem;
       margin-bottom: 15px;
     }
+    .session-expired {
+      user-select: none;
+      color: #fa7365;
+      border: 1px solid #fa7365;
+      padding: 5px 10px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+    }
     .inputs {
       width: 300px;
       margin-bottom: 15px;
@@ -292,6 +478,7 @@ html {
   align-items: center;
   height: 65px;
   border-bottom: 1px solid #e1e4e8;
+  position: relative;
   .headLogo {
     font-size: 2rem;
     color: black;
@@ -303,6 +490,61 @@ html {
     justify-content: center;
     align-items: center;
     font-size: 0.9rem;
+    .userbadge-container {
+      margin-right: 15px;
+      cursor: pointer;
+      user-select: none;
+      z-index: 1;
+      display: flex;
+      .user-details {
+        display: flex;
+        padding: 7px 10px;
+        border-radius: 20px;
+        align-items: center;
+        .user-icon {
+          margin-right: 5px;
+          height: 19px;
+        }
+        &:hover {
+          background: #f0f1f2;
+        }
+      }
+    }
+    .userbadge-options {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: max-content;
+      width: max-content;
+      margin-top: 10px;
+      .userbadge-name {
+        border: 1px solid #e1e4e8;
+        background: white;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 45px 14px 20px 20px;
+        .userbadge-email {
+          font-size: 13px;
+          cursor: context-menu;
+          .content {
+            font-size: 12px;
+            color: #808080;
+          }
+        }
+        .ubb {
+          font-size: 13px;
+          padding: 10px 5px;
+          margin-top: 10px;
+          cursor: pointer;
+          user-select: none;
+          color: #fa7365;
+          border-radius: 5px;
+          &:hover {
+            background: #f0f1f2;
+          }
+        }
+      }
+    }
     .Links {
       color: black;
       margin-right: 10px;
@@ -310,7 +552,7 @@ html {
       cursor: pointer;
       border-radius: 20px;
       &:hover {
-        background: #fafafa;
+        background: #f0f1f2;
       }
     }
   }

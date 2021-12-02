@@ -1,24 +1,85 @@
+import React from "react";
 import "./style/App.css";
 import Homepage from "./components/homepage";
 import Login from "./components/login";
 import Signup from "./components/signup";
-import Dashboard from "./components/dashboard";
 import SurveyForm from "./components/survey";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Visualization from "./components/visualization";
+import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
+import AuthToken from "./components/AuthToken";
+import UsersResponse from "./components/response";
 
-function App() {
+export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" exact element={<Homepage />} />
-        <Route path="/login" exact element={<Login />} />
-        <Route path="/signup" exact element={<Signup />} />
-        <Route path="/dashboard" exact element={<Dashboard />} />
-        <Route path="/survey" exact element={<SurveyForm />} />
-        {/* <Route path="/visualization" exact element={<Visualization />} /> */}
-      </Routes>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" exact>
+            <Route path="/" element={<Homepage />} />
+            <Route path="credentials" element={<AuthToken />} />
+            <Route
+              path="login"
+              element={
+                !sessionStorage.getItem("palp-user") ? (
+                  <Login />
+                ) : (
+                  <Navigate to="/" />
+                )
+              }
+            />
+            <Route
+              path="signup"
+              element={
+                !sessionStorage.getItem("palp-user") ? (
+                  <Signup />
+                ) : (
+                  <Navigate to="/" />
+                )
+              }
+            />
+            <Route
+              path="visualization"
+              element={
+                sessionStorage.getItem("palp-user") ? (
+                  sessionStorage.getItem("credential") ? (
+                    <Visualization />
+                  ) : (
+                    <Navigate to="/survey" />
+                  )
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            />
+            <Route
+              path="survey"
+              exact
+              element={
+                sessionStorage.getItem("credential") ? (
+                  <SurveyForm />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            />
+            <Route
+              path="response"
+              exact
+              element={
+                sessionStorage.getItem("palp-user") ? (
+                  sessionStorage.getItem("credential") ? (
+                    <UsersResponse />
+                  ) : (
+                    <Navigate to="/survey" />
+                  )
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
-
-export default App;

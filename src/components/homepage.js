@@ -1,23 +1,7 @@
 import Header from "./header";
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import jwt from "jsonwebtoken";
+import React from "react";
 
 const Homepage = () => {
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (sessionStorage.getItem("token")) {
-      try {
-        const verified = jwt.verify(
-          sessionStorage.getItem("token"),
-          process.env.REACT_APP_TOKEN_SECRET
-        );
-        verified._id ? navigate("/dashboard") : navigate("/login");
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  },[navigate]);
   return (
     <>
       <Header />

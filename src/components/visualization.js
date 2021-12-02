@@ -1,39 +1,40 @@
 import React, { useEffect, useState } from "react";
 import { FaChevronRight, FaCogs, FaChartPie } from "react-icons/fa";
 import { BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Bar } from "recharts";
+import Header from "./header";
 
 const Visualization = () => {
   const [isData, setisData] = useState([]);
 
   const rdate = new Date();
 
-  const Data = async () => {
-    try {
-      const response = await fetch(
-        `https://s4lud-palp-api.herokuapp.com/api/palp/data`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "auth-token": sessionStorage.getItem("token"),
-          },
-        }
-      );
-      const userDataList = await response.json();
-      setisData(userDataList);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   useEffect(() => {
-    let isUnmounted = false;
-    if (!isUnmounted) {
-      Data();
-    }
-    return () => {
-      isUnmounted = true;
+    const fetchData = async () => {
+      const AbortCont = new AbortController();
+      await fetch(`https://s4lud-palp-api.herokuapp.com/api/palp/data`, {
+        signal: AbortCont.signal,
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": sessionStorage.getItem("token"),
+        },
+      })
+        .then((res) => {
+          if (!res.ok) {
+            throw Error();
+          }
+          return res.json();
+        })
+        .then((data) => {
+          return setisData(data);
+        })
+        .catch((err) => {
+        });
+      return () => AbortCont.abort();
     };
+    setTimeout(() => {
+      fetchData();
+    }, 1000);
   }, []);
 
   const CountingClusters = () => {
@@ -1687,6 +1688,7 @@ const Visualization = () => {
 
   return (
     <>
+      <Header />
       <div className="gridStyle">
         <CountingClusters />
         <div className="visual-container">
