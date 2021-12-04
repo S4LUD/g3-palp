@@ -41,7 +41,7 @@ export default function App() {
               path="visualization"
               element={
                 sessionStorage.getItem("palp-user") ? (
-                  sessionStorage.getItem("credential") ? (
+                  sessionStorage.getItem("credential") === "true" ? (
                     <Visualization />
                   ) : (
                     <Navigate to="/survey" />
@@ -67,7 +67,7 @@ export default function App() {
               exact
               element={
                 sessionStorage.getItem("palp-user") ? (
-                  sessionStorage.getItem("credential") ? (
+                  sessionStorage.getItem("credential") === "true" ? (
                     <UsersResponse />
                   ) : (
                     <Navigate to="/survey" />

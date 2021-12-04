@@ -279,7 +279,7 @@ const Visualization = () => {
             <XAxis dataKey="rate" />
             <YAxis />
             <Tooltip />
-            <Bar dataKey="percentage" fill="#8884d8" />
+            <Bar dataKey="percentage" fill="#f58840" />
           </BarChart>
           <div className="title">Student Use Devices</div>
           <BarChart width={250} height={150} data={DevicesShow}>
@@ -287,7 +287,7 @@ const Visualization = () => {
             <XAxis dataKey="device" />
             <YAxis />
             <Tooltip />
-            <Bar dataKey="total" fill="#8884d8" />
+            <Bar dataKey="total" fill="#f58840" />
           </BarChart>
         </div>
       );

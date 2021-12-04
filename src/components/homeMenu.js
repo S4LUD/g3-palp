@@ -4,12 +4,13 @@ const HomeMenu = () => {
   return (
     <>
       <Link to="/login">
-        <div className="Links">Login</div>
+        <div className="new-Links">Login</div>
       </Link>
+      <div className="seperator">or</div>
       <Link to="/signup">
-        <div className="Links">Sign up</div>
+        <div className="n-Links">Sign up</div>
       </Link>
-      <div className="Links">About</div>
+      {/* <div className="Links">About</div> */}
     </>
   );
 };

@@ -17,7 +17,7 @@ html {
 }
 
 .Logo {
-  background: #9ADC6D;
+  background: #2c272e;
   height: 100vh;
   width: 100vw;
   display: -webkit-box;
@@ -32,7 +32,9 @@ html {
 }
 
 .Logo .title {
-  font-size: 50px;
+  color: #f58840;
+  font-size: 60px;
+  font-weight: 300;
 }
 
 .user-response {
@@ -49,12 +51,18 @@ html {
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
-  border: 1px solid #e1e4e8;
+  border: 1px solid #ffccaf;
+  border-radius: 10px;
 }
 
 .user-response .res-table .title {
+  background: #ffe9dc;
   padding: 15px;
-  background: #f0f1f2;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .user-response .res-table .program-container {
@@ -79,7 +87,7 @@ html {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border: 1px solid #e1e4e8;
+  border: 1px solid #ffccaf;
   padding: 5px;
   border-radius: 5px;
   width: 90px;
@@ -118,7 +126,7 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  border: 1px solid #e1e4e8;
+  border: 1px solid #ffccaf;
   padding: 5px;
   border-radius: 5px;
   width: 100px;
@@ -157,7 +165,7 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  border: 1px solid #e1e4e8;
+  border: 1px solid #ffccaf;
   padding: 5px;
   border-radius: 5px;
   width: 100px;
@@ -193,7 +201,7 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  border: 1px solid #e1e4e8;
+  border: 1px solid #ffccaf;
   padding: 5px;
   border-radius: 5px;
   -webkit-box-pack: center;
@@ -209,12 +217,15 @@ html {
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
-  border: 1px solid #e1e4e8;
+  border: 1px solid #ffccaf;
+  border-radius: 10px;
 }
 
 .user-response .res-list .title {
   padding: 15px;
-  background: #f0f1f2;
+  font-size: 16px;
+  font-weight: 500;
+  background: #ffe9dc;
 }
 
 .user-response .res-list .user-res-data-list {
@@ -234,7 +245,7 @@ html {
 .user-response .res-list .user-res-data-list .user-content .user-data {
   padding: 8px 5px;
   border-radius: 5px;
-  border: 1px solid #e1e4e8;
+  border: 1px solid #ffccaf;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -326,7 +337,7 @@ html {
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
-  border: 1px solid #e1e4e8;
+  border: 1px solid #ffccaf;
   width: 30%;
 }
 
@@ -343,19 +354,19 @@ html {
 }
 
 .gridStyle .resultContent .overall .allResult .oGood {
-  border: 1px solid #e1e4e8;
+  border: 1px solid #ffccaf;
   background: #f0f1f2;
   padding: 5px;
 }
 
 .gridStyle .resultContent .overall .allResult .oHigh {
-  border: 1px solid #e1e4e8;
+  border: 1px solid #ffccaf;
   background: #f0f1f2;
   padding: 5px;
 }
 
 .gridStyle .resultContent .title {
-  background: #f0f1f2;
+  background: #ffe9dc;
   padding: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -376,12 +387,12 @@ html {
 
 .gridStyle .visual-container {
   margin: 20px;
-  border: 1px solid #e1e4e8;
+  border: 1px solid #ffccaf;
   width: 70%;
 }
 
 .gridStyle .visual-container .title {
-  background: #f0f1f2;
+  background: #ffe9dc;
   padding: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -447,7 +458,7 @@ html {
   cursor: pointer;
   font-size: 15px;
   font-weight: 500;
-  background: #f8f8fa;
+  background: #ffe9dc;
   border-radius: 5px;
 }
 
@@ -524,7 +535,7 @@ html {
 }
 
 .loading {
-  background: rgba(13, 17, 23, 0.1);
+  background: #2c272e;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -557,6 +568,7 @@ html {
 }
 
 .login-container {
+  background: #f58840;
   height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -570,6 +582,8 @@ html {
 }
 
 .login-container .login-wrapper {
+  background: white;
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -584,34 +598,69 @@ html {
       -ms-flex-direction: column;
           flex-direction: column;
   border: 1px solid #f5f5f5;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 40px;
+  border-radius: 10px;
 }
 
 .login-container .login-wrapper .success {
-  color: #9adc6d;
+  color: white;
+  background: #9adc6d;
   padding: 5px;
   font-size: 12px;
+  width: 100%;
+  font-weight: 300;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-}
-
-.login-container .login-wrapper .error {
-  color: #fa7365;
-  padding: 5px;
-  font-size: 12px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
-.login-container .login-wrapper .signup-link {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.login-container .login-wrapper .error {
+  color: white;
+  background: #fa7365;
+  padding: 5px;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 300;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.login-container .login-wrapper .signup-link {
+  border-top: 1px solid #ececec;
+  position: absolute;
+  height: 65px;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -619,19 +668,21 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 0.8rem;
-  margin-top: 15px;
-  color: #767a7e;
+  color: black;
+  font-size: 14px;
+  background: #f7f7f7;
+  border-end-start-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: 100%;
 }
 
 .login-container .login-wrapper .signup-link div {
-  color: #767a7e;
+  color: #ff8243;
   text-decoration: underline;
 }
 
 .login-container .login-wrapper .signup-link div:hover {
-  color: #52abfa;
-  font-weight: bold;
+  color: #f58840;
 }
 
 .login-container .login-wrapper .forgot-password {
@@ -649,9 +700,10 @@ html {
 }
 
 .login-container .login-wrapper .lp-title {
-  color: black;
-  font-size: 1.8rem;
-  margin-bottom: 15px;
+  color: #f58840;
+  font-size: 24px;
+  margin-bottom: 40px;
+  font-weight: 300;
 }
 
 .login-container .login-wrapper .session-expired {
@@ -667,64 +719,77 @@ html {
 }
 
 .login-container .login-wrapper .inputs {
-  width: 300px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border: 1px solid #f5f5f5;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  width: 348px;
+  margin-bottom: 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
 }
 
 .login-container .login-wrapper .inputs svg {
-  margin-left: 10px;
+  position: absolute;
+  left: 0;
+  top: 8px;
+  margin: 5px 12px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  fill: #a8a8a8;
+}
+
+.login-container .login-wrapper .inputs .seperator {
+  position: absolute;
+  background: #a8a8a8;
+  height: 25px;
+  width: 1px;
+  top: 10px;
+  left: 40px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .login-container .login-wrapper .inputs input {
   width: 100%;
-  height: 35px;
-  padding-left: 10px;
-  border: none;
-  outline: none;
-  background: none;
-}
-
-.login-container .login-wrapper .inputd {
-  width: 300px;
+  height: 44px;
+  border: 1px solid #a8a8a8;
   border-radius: 5px;
-  border: 1px solid #f5f5f5;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.login-container .login-wrapper .inputd svg {
-  margin-left: 10px;
-}
-
-.login-container .login-wrapper .inputd input {
-  width: 100%;
-  height: 35px;
-  padding-left: 10px;
-  border: none;
   outline: none;
-  background: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  padding-left: 50px;
+}
+
+.login-container .login-wrapper .inputs input:focus {
+  border: 1px solid #ff8243;
+  -webkit-box-shadow: 0 0 3px #f58840;
+          box-shadow: 0 0 3px #f58840;
+}
+
+.login-container .login-wrapper .inputs input:focus + svg {
+  fill: #ff8243;
+}
+
+.login-container .login-wrapper .inputs input:focus + svg + .seperator {
+  background: #ff8243;
 }
 
 .login-container .login-wrapper button {
-  margin-top: 15px;
-  background: none;
-  border: 1px solid #f5f5f5;
+  margin-bottom: 60px;
+  background-image: -webkit-gradient(linear, left top, right top, from(#f58840), to(#ff8243));
+  background-image: linear-gradient(to right, #f58840, #ff8243);
   padding: 10px 20px;
   cursor: pointer;
-  border-radius: 20px;
-  font-size: 0.9rem;
+  border-radius: 4px;
+  font-size: 18px;
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  width: 100%;
 }
 
 .login-container .login-wrapper button:hover {
-  background: #fafafa;
-  color: #9adc6d;
-  font-weight: bold;
+  background-image: -webkit-gradient(linear, left top, right top, from(#f38f4c), to(#ff8d53));
+  background-image: linear-gradient(to right, #f38f4c, #ff8d53);
 }
 
 .headNav {
@@ -738,13 +803,13 @@ html {
       -ms-flex-align: center;
           align-items: center;
   height: 65px;
-  border-bottom: 1px solid #e1e4e8;
+  border-bottom: 1px solid #ffccaf;
   position: relative;
 }
 
 .headNav .headLogo {
   font-size: 2rem;
-  color: black;
+  color: #ff8243;
   cursor: pointer;
   margin-left: 10px;
 }
@@ -792,7 +857,7 @@ html {
 }
 
 .headNav .Menu-Links .userbadge-container .user-details:hover {
-  background: #f0f1f2;
+  color: #ff8243;
 }
 
 .headNav .Menu-Links .userbadge-options {
@@ -809,7 +874,7 @@ html {
 }
 
 .headNav .Menu-Links .userbadge-options .userbadge-name {
-  border: 1px solid #e1e4e8;
+  border: 1px solid #ffccaf;
   background: white;
   border-radius: 10px;
   padding: 10px;
@@ -835,12 +900,13 @@ html {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  color: #fa7365;
+  color: #f58840;
   border-radius: 5px;
+  font-weight: 500;
 }
 
 .headNav .Menu-Links .userbadge-options .userbadge-name .ubb:hover {
-  background: #f0f1f2;
+  color: #ff8243;
 }
 
 .headNav .Menu-Links .Links {
@@ -852,7 +918,33 @@ html {
 }
 
 .headNav .Menu-Links .Links:hover {
-  background: #f0f1f2;
+  color: #ff8243;
+}
+
+.headNav .Menu-Links .new-Links {
+  color: black;
+}
+
+.headNav .Menu-Links .new-Links:hover {
+  color: #ff8243;
+}
+
+.headNav .Menu-Links .seperator {
+  margin: 0 10px;
+  font-size: 12px;
+}
+
+.headNav .Menu-Links .n-Links {
+  background: #ff8243;
+  color: white;
+  font-size: 14px;
+  margin-right: 20px;
+  padding: 6px 12px;
+  border-radius: 5px;
+}
+
+.headNav .Menu-Links .n-Links:hover {
+  background: #d06224;
 }
 
 .homepage {
@@ -861,6 +953,7 @@ html {
   display: -ms-flexbox;
   display: flex;
   padding: 10px;
+  cursor: context-menu;
 }
 
 .homepage .misvis {
@@ -871,12 +964,13 @@ html {
   margin: 10px;
   padding: 10px;
   color: black;
-  border: 1px solid #f5f5f5;
+  border: 1px solid #ffccaf;
   border-radius: 3px;
 }
 
 .homepage .misvis .mission .title {
-  font-size: 1rem;
+  font-size: 1.5rem;
+  color: #ff8243;
 }
 
 .homepage .misvis .mission .content {
@@ -887,12 +981,13 @@ html {
   margin: 10px;
   padding: 10px;
   color: black;
-  border: 1px solid #f5f5f5;
+  border: 1px solid #ffccaf;
   border-radius: 3px;
 }
 
 .homepage .misvis .vision .title {
-  font-size: 1rem;
+  font-size: 1.5rem;
+  color: #ff8243;
 }
 
 .homepage .misvis .vision .content {
@@ -903,13 +998,14 @@ html {
   margin: 10px 10px 10px 5px;
   padding: 10px;
   color: black;
-  border: 1px solid #f5f5f5;
+  border: 1px solid #ffccaf;
   border-radius: 3px;
   width: 50vw;
 }
 
 .homepage .objective .title {
-  font-size: 1rem;
+  font-size: 1.5rem;
+  color: #ff8243;
 }
 
 .homepage .objective .content {
